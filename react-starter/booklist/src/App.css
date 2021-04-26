@@ -30,7 +30,9 @@
 .books{
 height: auto;
 width: auto;
-
+}
+.books:hover{
+  cursor: pointer;
 }
 .bookImage{
   width: 70%;

@@ -27,7 +27,8 @@ class SearchBar extends Component{
             <input value = {this.state.userinput} onChange={this.updateInput} className="searchInput" placeholder="Enter Search Item Here" type="text" />
             </div>
             <div>
-            <button className="btnSearch" onClick={this.clearContents}>Search</button>
+            <button className="btnSearch" >Search</button>
+            <button className="btnClear" onClick={this.clearContents}>Clear</button>
             </div>
             </header>
 

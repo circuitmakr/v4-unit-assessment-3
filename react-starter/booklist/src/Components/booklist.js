@@ -1,34 +1,44 @@
 import React, {Component} from 'react'
 import data from '../data'
-import Shelf from './shelf'
+
 
 class Booklist extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
            items: data,
-           shelf: []
         }
-    this.addToShelf = this.addToShelf.bind()
-    }
-addToShelf(e){
-let index = parseInt(e.target.alt)
-let selection = []
-selection.push(data[index].img, data[index].title, data[index].author)
-}
-    render(){
 
+    }
+
+addToShelf(e){
+        console.log(e)
+          let index = parseInt(e.target.alt)
+          let selection = []
+          selection.push(data[index].img, data[index].title, data[index].author)
+          this.setState({shelf: selection})
+          console.log(selection)
+ }
+  collection = this.props.books
+
+    render(){
+        
         return(
             <div className="booksContainer">
-                {this.state.items.map(items =>{
-                 return   <div className="books">
-                     <a href="#" onClick={this.addToShelf}><img key="image" className="bookImage" src={items.img} alt={items.id}></img></a>
-                     <div key="title" className="bookTitle"><h3>{items.title}</h3></div> 
-                     <div key="author" className="bookAuthor"><h4>{items.author}</h4></div>
+                
+                 {this.collection.map(function(item,index,array) {    
+                    return <div className="books">
+                     <img  key={item.id} className="bookImage" src={item.img} alt={item.id}></img>
+                     <div  onClick={(e) => this.addToShelf(e.target.alt)} key="title" className="bookTitle"><h3>{item.title}</h3></div> 
+                     <div key="author" className="bookAuthor"><h4>{item.author}</h4></div>
                      </div>
-                })}
-            </div>
-        )
+                  
+                 })}
+             </div>
+         )
+         
     }
+
 }
+
 export default Booklist
